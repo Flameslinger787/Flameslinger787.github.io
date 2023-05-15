@@ -7,13 +7,13 @@
 
   body{
     font-family: myFont, Arial, sans-serif;
+    color: rgb(204, 204, 204);
   }
 
   p{
     display: block;
     text-align: center;
     font-size: 40px;
-    color: rgb(244, 238, 237);
   }
 
 
@@ -39,7 +39,7 @@
   nav ul li a {
     display: block;
     padding: 20px;
-    color: #fff;
+    color: rgb(204, 204, 204);
     text-decoration: none;
     font-weight: bold;
   }
@@ -57,5 +57,5 @@
     height: auto;
     margin-left: auto;
     margin-right: auto;
-    padding: 35px;
+    padding: 20px;
 }
