@@ -1,19 +1,41 @@
-header {
-    background-color: #333;
-    border: 20px solid green;
+  /*Creating a font, used with permission from
+  https://www.1001fonts.com/junegull-font.html*/
+  @font-face {
+    font-family: 'myFont';
+    src: url('Assets/junegull.otf.otf'), url('Assets/junegull.ttf.ttf'),url('Assets/junegull.woff') format('truetype');
+  }
+
+  body{
+    font-family: myFont, Arial, sans-serif;
+  }
+
+  p{
+    display: block;
+    text-align: center;
+    font-size: 40px;
+    color: rgb(244, 238, 237);
+  }
+
+
+  header {
+    background-color: rgb(11, 37, 69);
+    border: 5px solid rgb(19, 64, 116);
     text-align: right;
   }
   
+
   nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
   
+
   nav ul li {
     display: inline-block;
   }
   
+
   nav ul li a {
     display: block;
     padding: 20px;
@@ -22,11 +44,18 @@ header {
     font-weight: bold;
   }
   
+
   nav ul li a:hover {
-    background-color: #555;
+    background-color: rgb(19, 64, 116);
   }
 
+
+  /*Picture of ME! */
   img{
+    display: block;
     width: 50%;
     height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 35px;
 }
