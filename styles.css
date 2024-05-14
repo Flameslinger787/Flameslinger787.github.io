@@ -1,61 +1,81 @@
-  /*Creating a font, used with permission from
-  https://www.1001fonts.com/junegull-font.html*/
-  @font-face {
-    font-family: 'myFont';
-    src: url('Assets/junegull.otf.otf'), url('Assets/junegull.ttf.ttf'),url('Assets/junegull.woff') format('truetype');
-  }
+/* Creating a font, used with permission from
+https://www.1001fonts.com/junegull-font.html */
+@font-face {
+  font-family: 'myFont';
+  src: url('Assets/junegull.otf.otf'), url('Assets/junegull.ttf.ttf'), url('Assets/junegull.woff') format('truetype');
+}
 
-  body{
-    font-family: myFont, Arial, sans-serif;
-    color: rgb(204, 204, 204);
-  }
+body {
+  font-family: myFont, Arial, sans-serif;
+  color: rgb(204, 204, 204);
+  background-color: rgb(141, 169, 196);
+}
 
-  p{
-    display: block;
-    text-align: center;
-    font-size: 40px;
-  }
+p {
+  display: block;
+  text-align: center;
+  font-size: 40px;
+}
 
+header {
+  background-color: rgb(69, 11, 35);
+  border: 5px solid rgb(19, 64, 116);
+  text-align: right;
+  padding: 10px 0;
+}
 
-  header {
-    background-color: rgb(69, 11, 35);
-    border: 5px solid rgb(19, 64, 116);
-    text-align: right;
-  }
-  
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
 
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
+nav ul li {
+  display: inline-block;
+  position: relative;
+}
 
-  nav ul li {
-    display: inline-block;
-  }
-  
+nav ul li a {
+  display: block;
+  padding: 20px;
+  color: rgb(204, 204, 204);
+  text-decoration: none;
+  font-weight: bold;
+}
 
-  nav ul li a {
-    display: block;
-    padding: 20px;
-    color: rgb(204, 204, 204);
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
+nav ul li a:hover {
+  background-color: rgb(19, 64, 116);
+}
 
-  nav ul li a:hover {
-    background-color: rgb(19, 64, 116);
-  }
+nav ul ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgb(69, 11, 35);
+  padding: 0;
+}
 
+nav ul ul li {
+  float: none;
+}
 
-  /*Picture of ME! */
-  img{
-    display: block;
-    width: 50%;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
+nav ul ul li a {
+  padding: 10px 20px;
+  color: rgb(204, 204, 204);
+}
+
+nav ul li:hover > ul {
+  display: block;
+}
+
+img {
+  display: block;
+  width: 50%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
 }
