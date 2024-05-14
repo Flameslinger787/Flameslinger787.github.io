@@ -1,61 +1,60 @@
-  /*Creating a font, used with permission from
-  https://www.1001fonts.com/junegull-font.html*/
-  @font-face {
-    font-family: 'myFont';
-    src: url('Assets/junegull.otf.otf'), url('Assets/junegull.ttf.ttf'),url('Assets/junegull.woff') format('truetype');
-  }
+/* Importing the font */
+@font-face {
+  font-family: 'myFont';
+  src: url('Assets/junegull.otf.otf'), url('Assets/junegull.ttf.ttf'), url('Assets/junegull.woff') format('truetype');
+}
 
-  body{
-    font-family: myFont, Arial, sans-serif;
-    color: rgb(204, 204, 204);
-  }
+/* Applying the font to the entire body */
+body {
+  font-family: myFont, Arial, sans-serif;
+  color: rgb(204, 204, 204);
+  margin: 0;
+  padding: 0;
+}
 
-  p{
-    display: block;
-    text-align: center;
-    font-size: 40px;
-  }
+/* Centering text and giving it some space */
+p {
+  text-align: center;
+  font-size: 24px; /* Reduced font size for better readability */
+  margin: 20px 0; /* Added margin top and bottom */
+}
 
+/* Styling the header */
+header {
+  background-color: rgb(11, 37, 69);
+  border-bottom: 5px solid rgb(19, 64, 116); /* Changed border to bottom only */
+  padding: 10px 20px; /* Added padding for better spacing */
+}
 
-  header {
-    background-color: rgb(11, 37, 69);
-    border: 5px solid rgb(19, 64, 116);
-    text-align: right;
-  }
-  
+/* Styling the navigation */
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center; /* Centering the navigation links */
+}
 
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
+nav ul li {
+  display: inline-block;
+}
 
-  nav ul li {
-    display: inline-block;
-  }
-  
+nav ul li a {
+  padding: 10px 20px; /* Reduced padding for better spacing */
+  color: rgb(204, 204, 204);
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s; /* Smooth transition on hover */
+}
 
-  nav ul li a {
-    display: block;
-    padding: 20px;
-    color: rgb(204, 204, 204);
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
+nav ul li a:hover {
+  background-color: rgb(19, 64, 116);
+}
 
-  nav ul li a:hover {
-    background-color: rgb(19, 64, 116);
-  }
-
-
-  /*Picture of ME! */
-  img{
-    display: block;
-    width: 50%;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
+/* Centering the image */
+img {
+  display: block;
+  margin: 0 auto; /* Centering horizontally */
+  max-width: 100%; /* Ensuring the image doesn't exceed its container */
+  height: auto;
+  padding: 20px;
 }
