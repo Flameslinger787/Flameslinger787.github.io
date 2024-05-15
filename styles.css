@@ -85,3 +85,10 @@ img {
 .grid-item:hover {
   transform: scale(1.05);
 }
+
+.half-size {
+  max-width: 50%; /* This limits the image width to half of the webpage */
+  height: auto; /* This maintains the aspect ratio */
+  display: block; /* This ensures proper alignment */
+  margin: auto; /* This centers the image horizontally */
+}
