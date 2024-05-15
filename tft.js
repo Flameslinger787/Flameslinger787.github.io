@@ -73,7 +73,7 @@ const crafting_rules = {
     "AA": { value: 6, name: "bramble-vest" }, "AB": { value: 4, name: "gargoyle-stoneplate" }, "AC": { value: 4, name: "sunfire-cape" }, "AD": { value: 4, name: "fimbulwinter" }, "AE": { value: 4, name: "crownguard" },
     "AF": { value: 4, name: "steadfast-hammer" }, "AG": { value: 2, name: "titans-resolve" }, "AH": { value: 4, name: "edge-of-night" },
     "BB": { value: 6, name: "dragons-claw" }, "BC": { value: 1, name: "evenshroud" }, "BD": { value: 4, name: "adaptive-helm" }, "BE": { value: 4, name: "ionic-spark" }, "BF": { value: 1, name: "quicksilver" },
-    "BG": { value: 4, name: "runaans-hurricane" }, "BH": { value: 2, name: "blood-thirster" },
+    "BG": { value: 4, name: "runaans-hurricane" }, "BH": { value: 2, name: "bloodthirster" },
     "CC": { value: 6, name: "warmogs-armor" }, "CD": { value: 4, name: "redemption" }, "CE": { value: 4, name: "morellonomicon" }, "CF": { value: 4, name: "guardbreaker" }, "CG": { value: 4, name: "nashors-tooth" },
     "CH": { value: 2, name: "steraks-gage" },
     "DD": { value: 6, name: "blue-buff" }, "DE": { value: 1, name: "archangels-staff" }, "DF": { value: 1, name: "hand-of-justice" }, "DG": { value: 2, name: "statikk-shiv" }, "DH": { value: 6, name: "spear-of-shojin" },
