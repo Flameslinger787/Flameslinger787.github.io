@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dan Herman Games</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.5.2/core.css">
+  <script type="module" src="https://pyscript.net/releases/2024.5.2/core.js"></script>
+  <script src="tft.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/school.html">School</a></li>
+        <li><a href="/projects.html">Projects</a></li>
+        <li><a href="/games.html">Games</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1 style="text-align: center;">TFT Optimal Item Finder</h1>
+  <h2 style="text-align: center;">What Would Dan Herman Do?</h2>
+
+  <div id="container">
+    <div id="items-container">
+      <div class="item" id="vest">
+        <img src="https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/chain-vest.png?v=57" alt="Vest" onclick="incrementCount('vest')">
+        <div class="item-count" id="vest-count">0</div>
+      </div>
+      <div class="item" id="cloak">
+        <img src="https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/negatron-cloak.png?v=57" alt="Cloak" onclick="incrementCount('cloak')">
+        <div class="item-count" id="cloak-count">0</div>
+      </div>
+      <div class="item" id="belt">
+        <img src="https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/giants-belt.png?v=57" alt="Belt" onclick="incrementCount('belt')">
+        <div class="item-count" id="belt-count">0</div>
+      </div>
+      <div class="item" id="tear">
+        <img src="https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/tear-of-the-goddess.png?v=57" alt="Tear" onclick="incrementCount('tear')">
+        <div class="item-count" id="tear-count">0</div>
+      </div>
+      <div class="item" id="rod">
+        <img src="https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/needlessly-large-rod.png?v=57" alt="Rod" onclick="incrementCount('rod')">
+        <div class="item-count" id="rod-count">0</div>
+      </div>
+      <div class="item" id="glove">
+        <img src="https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/sparring-gloves.png?v=57" alt="Glove" onclick="incrementCount('glove')">
+        <div class="item-count" id="glove-count">0</div>
+      </div>
+      <div class="item" id="bow">
+        <img src="https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/recurve-bow.png?v=57" alt="Bow" onclick="incrementCount('bow')">
+        <div class="item-count" id="bow-count">0</div>
+      </div>
+      <div class="item" id="sword">
+        <img src="https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/bf-sword.png?v=57" alt="Sword" onclick="incrementCount('sword')">
+        <div class="item-count" id="sword-count">0</div>
+      </div>
+    </div>
+
+    <div id="buttons-container">
+      <button type="button" onclick="runCrafting()">Craft Items</button>
+      <button type="button" onclick="clearCount()">Clear Items</button>
+    </div>
+
+    <div id="optimal-items"></div> <!-- Div to display the results -->
+  </div>
+
+  <script src="tft.js"></script>
+
+</body>
+</html>
+
+
+<style>
+body {
+  background-color: rgb(141, 169, 196);
+}
+
+#container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.item {
+  display: inline-block;
+  margin: 5px;
+  text-align: center;
+}
+
+.item img {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+.item-count {
+  font-size: 16px;
+  margin-top: 3px;
+  transform: translateX(+20%);
+}
+
+#items-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #2c3e50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'myFont', Arial, sans-serif;
+}
+
+button:hover {
+  background-color: #1d2733;
+}
+
+#optimal-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#optimal-items div {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  justify-content: center;
+}
+
+#optimal-items img {
+  width: 40px;
+  height: 40px;
+}
+
+#optimal-items span {
+  font-size: 16px;
+}
+</style>
