@@ -63,7 +63,7 @@ img {
 
 .grid-item {
   text-align: center;
-  width: 50%;
+  width: 80%;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -83,12 +83,24 @@ img {
 }
 
 .grid-item:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .half-size {
-  max-width: 50%; /* This limits the image width to half of the webpage */
-  height: auto; /* This maintains the aspect ratio */
-  display: block; /* This ensures proper alignment */
-  margin: auto; /* This centers the image horizontally */
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+
+.big-grid-item {
+  text-align: center;
+  width: 90%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.big-grid-item:hover {
+  transform: scale(1.1);
 }
