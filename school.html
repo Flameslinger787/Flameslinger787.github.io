@@ -11,7 +11,7 @@
 
     .highlight {
             font-weight: bold;
-            color: red; /* Optional: change color for visibility */
+            color: rgb(26, 0, 172);
         }
   </style>
 <body>
@@ -45,7 +45,7 @@
     <div class="grid-item">
       <h2>Autoshop Database</h2>
       <a href="https://csdb01.cs.edinboro.edu/~d839827h/Auto_Proj/index.html"><img src="Assets/Database.PNG" alt="Link to autobody database"></a>
-      <p class="description">Complete database project which represents managing an autobody repair shop.</p>
+      <p class="description">Complete database project which represents managing an autobody repair shop in SQL.</p>
     </div>
     <div class="grid-item">
       <h2>Placeholder</h2>
@@ -60,19 +60,22 @@
     <a href="School/Robot/RobotPreview.html">
         <img src="Assets/RobotPose.PNG" alt="Link to autobody database">
     </a>
-    <p id="content">Complete pipeline of creating a character to animating it from scratch using Maya, 3d Substance Painter, and After Effects.</p>
+    <p id="description">Complete pipeline of creating a character to animating it from scratch using Maya, 3d Substance Painter, and After Effects.</p>
 </div>
 
 
 <script>
-  function boldWord(word) {
-      const contentElement = document.getElementById('content');
-      const regex = new RegExp(`(${word})`, 'gi');
-      contentElement.innerHTML = contentElement.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+  function boldWords(words) {
+      const paragraphs = document.querySelectorAll('p');
+      const regex = new RegExp(`(${words.join('|')})`, 'gi');
+
+      paragraphs.forEach(paragraph => {
+          paragraph.innerHTML = paragraph.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+      });
   }
 
-  // Call the function with the word you want to bold
-  boldWord('highlight');
+  boldWords(['maya', 'after effects', '3d substance painter', 'html', 'javascript', 'sql']);
+  
 </script>
 
 </body>
