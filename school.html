@@ -8,6 +8,11 @@
     body {
       background-color: rgb(141, 169, 196);
     }
+
+    .highlight {
+            font-weight: bold;
+            color: red; /* Optional: change color for visibility */
+        }
   </style>
 <body>
   <header>
@@ -55,8 +60,20 @@
     <a href="School/Robot/RobotPreview.html">
         <img src="Assets/RobotPose.PNG" alt="Link to autobody database">
     </a>
-    <p class="description">Complete pipeline of creating a character to animating it from scratch using <b>Maya, 3d Substance Painter,</b> and <b>After Effects.</b></p>
+    <p id="content">Complete pipeline of creating a character to animating it from scratch using Maya, 3d Substance Painter, and After Effects.</p>
 </div>
+
+
+<script>
+  function boldWord(word) {
+      const contentElement = document.getElementById('content');
+      const regex = new RegExp(`(${word})`, 'gi');
+      contentElement.innerHTML = contentElement.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+  }
+
+  // Call the function with the word you want to bold
+  boldWord('highlight');
+</script>
 
 </body>
 </html>
