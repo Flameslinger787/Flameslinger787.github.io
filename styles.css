@@ -104,3 +104,14 @@ img {
 .big-grid-item:hover {
   transform: scale(1.1);
 }
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+}
