@@ -34,7 +34,7 @@ const quantities = {
       const containerDiv = document.createElement('div');
   
       const finalItemImg = document.createElement('img');
-      finalItemImg.src = `https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/${item.combination_name}.png?v=57`;
+      finalItemImg.src = `https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/${item.combination_name}.png?v=65`;
       finalItemImg.alt = item.combination_name;
       containerDiv.appendChild(finalItemImg);
   
@@ -45,7 +45,7 @@ const quantities = {
       item.components.forEach((componentName, index) => {
         const componentImg = document.createElement('img');
         const component = components.find(comp => comp.name === componentName);
-        componentImg.src = `https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/${component.name}.png?v=57`;
+        componentImg.src = `https://cdn.mobalytics.gg/assets/tft/images/game-items/set11/${component.name}.png?v=65`;
         componentImg.alt = component.name;
         containerDiv.appendChild(componentImg);
   
