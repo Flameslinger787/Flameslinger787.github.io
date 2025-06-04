@@ -3,17 +3,71 @@
 <head>
   <title>Dan Herman Games</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<style>
+  <style>
     body {
       background-color: rgb(141, 169, 196);
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .main-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 40px;
+    }
+
+    .left-side {
+      width: 50%;
+      padding-right: 20px;
+      box-sizing: border-box;
+    }
+
+    .right-side {
+      width: 50%;
+      padding-left: 20px;
+      box-sizing: border-box;
+      background-color: rgba(151, 15, 15, 1);
+    }
+
+    .right-side a img:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .intro, .skills {
+      margin: 40px 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: contain;
     }
   </style>
+</head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="/index.html"> Home</a></li>
+        <li><a href="/index.html">Home</a></li>
         <li><a href="/school.html">School</a></li>
         <li><a href="/projects.html">Projects</a></li>
         <li><a href="/games.html">Games</a></li>
@@ -22,24 +76,48 @@
     </nav>
   </header>
 
-  <h1 style="text-align: center; font-size: 80px;">Who is Dan Herman?</h1>
-  <h1 style="text-align: center; margin: 40px;">  
-    Motivated and detail-oriented programmer with strong problem-solving skills and a passion for software 
-    development. Seeking an entry-level position to contribute technical expertise, collaborate with teams, and 
-    develop efficient solutions. Adept at coding, debugging, and documentation, with experience in multiple 
-    programming languages and development environments. 
-  </h1>
+  <div class="main-container">
+    <div class="left-side">
+      <h1 style="font-size: 80px;">Who is Dan Herman?</h1>
 
-  <img src="Assets/MeCore.jpg" alt="Professional Photo of Me" width="400" height="600">
+      <h1 class="intro">Motivated and detail-oriented programmer with strong problem-solving skills and a passion for software 
+        development. Seeking an entry-level position to contribute technical expertise, collaborate with teams, and 
+        develop efficient solutions. Adept at coding, debugging, and documentation, with experience in multiple 
+        programming languages and development environments. 
+      </h1>
 
-  <h1 style="text-align: center; margin: 40px;">Skills
-  <ul style="text-align: center; list-style: none; padding: 0; margin: 0;">
-      <li>• <strong>Software Development & Programming</strong> | Proficient in writing clean, efficient, and maintainable code.</li>
-      <li>• <strong>Project Documentation</strong> | Skilled in creating clear and structured technical documentation.</li>
-      <li>• <strong>Problem-Solving & Debugging</strong> | Strong analytical skills to identify and resolve issues effectively.</li>
-      <li>• <strong>Programming Languages</strong> | Experienced in C++, Python, and HTML.</li>
-      <li>• <strong>Version Control & Collaboration</strong> | Knowledgeable in Git and team-based development workflows.</li>
-  </ul></h1>  
+      <img src="Assets/MeCore.jpg" alt="Professional Photo of Me" width="400" height="600">
+
+      <h1 class="skills">Skills</h1>
+      <ul>
+        <li>• <strong>Software Development & Programming</strong> | Proficient in writing clean, efficient, and maintainable code.</li>
+        <li>• <strong>Project Documentation</strong> | Skilled in creating clear and structured technical documentation.</li>
+        <li>• <strong>Problem-Solving & Debugging</strong> | Strong analytical skills to identify and resolve issues effectively.</li>
+        <li>• <strong>Programming Languages</strong> | Experienced in C++, Python, and HTML.</li>
+        <li>• <strong>Version Control & Collaboration</strong> | Knowledgeable in Git and team-based development workflows.</li>
+      </ul>
+    </div>
+
+<div class="right-side">
+  <h2 style="text-align: center; font-size: 36px; margin-bottom: 20px;">Current Project:</h2>
+
+  <div style="text-align: center;">
+    <h3 style="font-size: 28px; margin-bottom: 10px;">League of Legends - Swain Matchup Guide</h3>
+
+    <a href="\Projects\SwainMatchups.html" style="display: inline-block; overflow: hidden; border-radius: 10px;">
+      <img src="Assets/SwainPreview.PNG" alt="Image of Swain Matchups"
+           style="max-width: 100%; height: auto; transition: transform 0.3s ease; display: block;">
+    </a>
+
+    <p>
+      <a href="\Projects\SwainMatchups.html" 
+         style="display: inline-block; padding: 10px 20px; background-color: #2b3a55; color: white; 
+                text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 15px;">
+        View Project Page
+      </a>
+    </p>
+  </div>
+</div>
 
 </body>
 </html>
