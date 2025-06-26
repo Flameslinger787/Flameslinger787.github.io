@@ -4,123 +4,126 @@
   <title>Dan Herman Games</title>
   <link rel="stylesheet" type="text/css" href="../styles.css" />
   <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      background-color: #970f0f;
-    }
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #970f0f;
+}
 
-    #info-box {
-      position: relative;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+header {
+  margin-bottom: 20px;
+}
 
-      background-blend-mode: overlay;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      text-shadow: 1px 1px 4px black;
-    }
+#info-box {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 0 auto 20px auto;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-shadow: 1px 1px 4px black;
+}
 
-    .ability-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 4px;
-      margin-bottom: 10px;
-    }
+#search-bar {
+  margin: 0 auto 15px auto;
+  max-width: 400px;
+}
 
-    .stars {
-      font-size: 1.2em;
-      color: gold;
-    }
+#search-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
 
-    .difficulty-group {
-      border: 3px solid;
-      border-radius: 15px;
-      padding: 15px;
-      margin: 20px auto;
-      max-width: 700px;
-      background-color: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 10px;
-    }
+#portrait-grid,
+.difficulty-group div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
 
-    .difficulty-group h2 {
-      margin-top: 0;
-      color: inherit;
-      text-shadow: 0 0 5px;
-    }
+.portrait {
+  cursor: pointer;
+  width: 100px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: transform 0.2s;
+}
 
-    #search-bar {
-      margin: 0 auto 15px auto;
-      max-width: 400px;
-    }
+.portrait:hover {
+  transform: scale(1.05);
+}
 
-    #search-input {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      font-size: 16px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.3);
-    }
+.difficulty-group {
+  border: 3px solid;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 700px;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px;
+}
 
-    #portrait-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
+.difficulty-group h2 {
+  margin-top: 0;
+  text-shadow: 0 0 5px;
+}
 
-    .portrait {
-      cursor: pointer;
-      width: 100px;
-      border-radius: 5px;
-      border: 2px solid transparent;
-      transition: transform 0.2s;
-    }
+ul {
+  text-align: left;
+  margin-top: 10px;
+}
 
-    .portrait:hover {
-      transform: scale(1.05);
-      border-color: transparent; /* removed blue border */
-    }
+.stars {
+  font-size: 1.2em;
+  color: gold;
+}
 
-    ul {
-      text-align: left;
-      margin-top: 10px;
-    }
+.ability-icons {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
 
-    .ability-icons {
-      display: flex;
-      gap: 30px;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
+.ability-icons div {
+  text-align: center;
+}
 
-    .ability-icons div {
-      text-align: center;
-    }
+.ability-icons h3 {
+  margin-bottom: 5px;
+  font-weight: normal;
+  font-size: 1em;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+}
 
-    .ability-icons h3 {
-      margin-bottom: 5px;
-      font-weight: normal;
-      font-size: 1em;
-      color: white;
-      text-shadow: 1px 1px 3px black;
-    }
+/* These two are used for both ability and keystone */
+.ability-icon,
+.highlight-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
 
-    .ability-icon {
-      width: 100px;
-      height: 100px;
-      border-radius: 4px;
-    }
-    .item-icons {
+.highlight-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.item-icons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -131,23 +134,10 @@
 .item-icon {
   width: 48px;
   height: 48px;
-
+  transition: transform 0.2s ease;
 }
 
 .item-icon:hover {
-  transform: scale(1.1);
-}
-
-    header {
-  margin-bottom: 20px;
-}
-
-.highlight-icon {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.highlight-icon:hover {
   transform: scale(1.1);
 }
 
