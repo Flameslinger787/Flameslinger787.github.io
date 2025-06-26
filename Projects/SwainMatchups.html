@@ -71,10 +71,6 @@
       box-shadow: 0 0 6px rgba(0,0,0,0.3);
     }
 
-    #portrait-container {
-      /* no changes */
-    }
-
     #portrait-grid {
       display: flex;
       flex-wrap: wrap;
@@ -124,9 +120,35 @@
       height: 100px;
       border-radius: 4px;
     }
+    .item-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.item-icon {
+  width: 48px;
+  height: 48px;
+
+}
+
+.item-icon:hover {
+  transform: scale(1.1);
+}
 
     header {
   margin-bottom: 20px;
+}
+
+.highlight-icon {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.highlight-icon:hover {
+  transform: scale(1.1);
 }
 
   </style>
@@ -144,7 +166,6 @@
     </nav>
   </header>
 
-    <!-- Search bar -->
   <div id="search-bar">
     <input type="text" id="search-input" placeholder="Search your matchup..." />
   </div>
@@ -170,17 +191,17 @@
   };
 
   const characters = [
-    {
-      name: "Galio",
-      difficulty: 1,
-      abilitystart: "Q",
-      keystoneStart: "Aery",
-      tips: [
-        "Play very aggressively.",
-        "Keep his shield down.",
-        "You always beat him post 6.",
-      ],
-    },
+{
+  name: "Galio",
+  difficulty: 1,
+  abilitystart: "Q",
+  keystoneStart: "Aery",
+  tips: [
+    "Play very aggressively.",
+    "Keep his shield down.",
+    "You always beat him post 6.",
+  ],
+},
 
         {
       name: "Veigar",
@@ -215,6 +236,10 @@
         "Freeze if you can.",
         "Zhonya's is amazing late-game.",
       ],
+      items: [
+    "https://www.mobafire.com/images/item/plated-steelcaps-64x.png",
+    "https://www.mobafire.com/images/item/zhonyas-hourglass-64x.png",
+  ]
     },
                     {
       name: "Malzahar",
@@ -272,6 +297,10 @@
         "His W cooldown is around 20 seconds early, use that time to harass and play aggressively",
         "His ult always appears behind you, try to time an E to hit him.",
       ],
+        items: [
+    "https://www.mobafire.com/images/item/plated-steelcaps-64x.png",
+    "https://www.mobafire.com/images/item/zhonyas-hourglass-64x.png",
+  ]
     },  
     {
       name: "Kassadin",
@@ -376,18 +405,24 @@
     const bgImage = getImageUrl(character.name);
     infoBox.style.backgroundImage = `url(${bgImage})`;
 
-    infoBox.innerHTML = `
-      <h2>${character.name}</h2>
-      <div class="ability-icons">
-        ${abilityImg1 ? `<div><h3>Start with ${ability1}</h3><img src="${abilityImg1}" alt="Ability ${ability1}" class="ability-icon"></div>` : ""}
-        ${keystoneImg ? `<div><h3>Take ${keystone.replace(/([A-Z])/g, ' $1').trim()}</h3><img src="${keystoneImg}" alt="Keystone ${keystone}" class="ability-icon"></div>` : ""}
-      </div>
-      <h3>Tips:</h3>
-      <ul>
-        ${character.tips.map(tip => `<li>${tip}</li>`).join("")}
-      </ul>
-      <p><strong>Difficulty:</strong> ${renderStars(character.difficulty)}</p>
-    `;
+infoBox.innerHTML = `
+  <h2>${character.name}</h2>
+  <p><strong>Difficulty:</strong> ${renderStars(character.difficulty)}</p>
+  <div class="ability-icons">
+    ${abilityImg1 ? `<div><h3>Start with ${ability1}</h3><img src="${abilityImg1}" alt="Ability ${ability1}" class="ability-icon highlight-icon"></div>` : ""}
+    ${keystoneImg ? `<div><h3>Take ${keystone.replace(/([A-Z])/g, ' $1').trim()}</h3><img src="${keystoneImg}" alt="Keystone ${keystone}" class="ability-icon highlight-icon"></div>` : ""}
+  </div>
+  <h3>Tips:</h3>
+  <ul>
+    ${character.tips.map(tip => `<li>${tip}</li>`).join("")}
+  </ul>
+  ${character.items && character.items.length > 0 ? `
+    <h3>Recommended Items:</h3>
+    <div class="item-icons">
+      ${character.items.map(itemUrl => `<img src="${itemUrl}" class="item-icon" />`).join("")}
+    </div>
+  ` : ""}
+`;
   }
 
 function createPortrait(character) {
