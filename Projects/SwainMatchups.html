@@ -141,6 +141,45 @@ ul {
   transform: scale(1.1);
 }
 
+.tether-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.tether-popup-content {
+  background: #222;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+  text-align: center;
+}
+
+.tether-popup-content h3 {
+  margin-top: 0;
+}
+
+.tether-popup-content button {
+  display: block;
+  margin: 15px auto 0;
+  padding: 8px 16px;
+  font-size: 1em;
+  background: #970f0f;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
@@ -191,6 +230,10 @@ ul {
     "Keep his shield down.",
     "You always beat him post 6.",
   ],
+
+    items: [
+    "https://www.mobafire.com/images/item/blackfire-torch-64x.png",
+  ]
 },
 
         {
@@ -214,6 +257,11 @@ ul {
         "You can E extend off her dogs.",
         "Dodge second dagger.",
       ],
+
+            items: [
+    "https://www.mobafire.com/images/item/plated-steelcaps-64x.png",
+    "https://www.mobafire.com/images/item/blackfire-torch-64x.png",
+  ]
     },
                 {
       name: "Qiyana",
@@ -228,6 +276,7 @@ ul {
       ],
       items: [
     "https://www.mobafire.com/images/item/plated-steelcaps-64x.png",
+    "https://www.mobafire.com/images/item/blackfire-torch-64x.png",
     "https://www.mobafire.com/images/item/zhonyas-hourglass-64x.png",
   ]
     },
@@ -242,6 +291,12 @@ ul {
         "Poke his passive out with your Q.",
         "Shove waves and roam if he plays passively."
       ],
+
+      items: [
+    "https://www.mobafire.com/images/item/mercurys-treads-64x.png",
+    "https://www.mobafire.com/images/item/blackfire-torch-64x.png",
+
+  ]
     },
       {
       name: "Talon",
@@ -253,6 +308,10 @@ ul {
         "Walk up aggressively when his W is down.",
         "Try to get prio so he cannot roam.",
       ],
+     items: [
+    "https://www.mobafire.com/images/item/plated-steelcaps-64x.png",
+    "https://www.mobafire.com/images/item/zhonyas-hourglass-64x.png",
+  ]
     },
       {
       name: "Annie",
@@ -338,8 +397,149 @@ ul {
         "Sidestep her Q and harass her when her fear is down.",
         "Match her roams or hardshove the wave, you are much stronger than her in 2v2s with your jungler.",
       ],
+      items: [
+    "https://www.mobafire.com/images/item/mercurys-treads-64x.png",
+    "https://www.mobafire.com/images/item/riftmaker-64x.png",
+    "https://www.mobafire.com/images/item/spirit-visage-64x.png",
+  ]
     }, 
+   {
+      name: "Zoe",
+      difficulty: 2,
+      abilitystart: "Q",
+      keystoneStart: "Aery",
+      tips: [
+        "Harass when her Q is down.",
+        "Do NOT get hit by her bubble, you can all-in if she misses.",
+        "Press E on her portal's starting location.",
+      ],
+      items: [
+    "https://www.mobafire.com/images/item/mercurys-treads-64x.png",
+  ]
+    }, 
+     {
+      name: "Vladimir",
+      difficulty: 2,
+      abilitystart: "Q",
+      keystoneStart: "Aery",
+      tips: [
+        "Don't trade when his Q is up.",
+        "Avoid his empowered Q at all costs.",
+        "He's very weak until level 9 when he maxes Q.",
+        "He outscales very hard, so play for early game advantages.",
+      ],
+      items: [
+    "https://www.mobafire.com/images/item/mercurys-treads-64x.png",
+    "https://www.mobafire.com/images/item/spirit-visage-64x.png",
+  ]
+    }, 
+        {
+      name: "Azir",
+      difficulty: 5,
+      abilitystart: "E",
+      keystoneStart: "PhaseRush",
+      tips: [
+        "You can trade early, but try to avoid interaction.",
+        "After first base, trading becomes impossible.",
+        "Post level 6, his ult makes you very gankable.",
+        "Aggressively all-in when his E-Q combo is down.",
+        "You will be outscaled everytime."
+      ],
+      items: [
+    "https://www.mobafire.com/images/item/mercurys-treads-64x.png",
+    "https://www.mobafire.com/images/item/spirit-visage-64x.png",
+  ]
+    },
     {
+      name: "Neeko",
+      difficulty: 5,
+      abilitystart: "E",
+      keystoneStart: "PhaseRush",
+      tips: [
+        "Try to tether her Q (It's impossible to dodge).",
+        "Don't stand in minions, it empowers her root.",
+        "Buying early boots is a must to space her Q.",
+        "You can farm passive stacks on her clone.",
+        "Count. Your. Minions."
+      ],
+      items: [
+    "https://www.mobafire.com/images/item/mercurys-treads-64x.png",
+    "https://www.mobafire.com/images/item/boots-of-swiftness-64x.png",
+  ]
+    },
+
+    {
+      name: "Akshan",
+      difficulty: 4,
+      abilitystart: "Q",
+      keystoneStart: "Aery",
+      tips: [
+        "Your Q is longer than his autoattack, try to spam him.",
+        "He wins extended fights, space him properly.",
+        "Do NOT let him freeze.",
+        "You can all-in him post level 6 with items.",
+        "He is very weak if he falls behind.",
+      ],
+      items: [
+    "https://www.mobafire.com/images/item/plated-steelcaps-64x.png",
+    "https://www.mobafire.com/images/item/frozen-heart-64x.png",
+  ]
+    },
+
+        {
+      name: "Hwei",
+      difficulty: 4,
+      abilitystart: "E",
+      keystoneStart: "PhaseRush",
+      tips: [
+        "He is very strong early game",
+        "Hide behind minions to avoid his QQ",
+        "Try to tether out his EE",
+        "Swiftness boots are essential, you can all-in him if he misses his E.",
+        "Try to take chaotic river fights with your jungler.",
+      ],
+      items: [
+    "https://www.mobafire.com/images/item/boots-of-swiftness-64x.png",
+  ]
+    },
+
+    {
+      name: "Orianna",
+      difficulty: 5,
+      abilitystart: "E",
+      keystoneStart: "PhaseRush",
+      tips: [
+        "Tethering and spacing is the key to this matchup.",
+        "Bait and dodge her Q.",
+        "Stay away from the ball.",
+        "The 1v1 is very difficult, especially once she has mana items",
+        "Buy boots early.",
+        "Try to play for botlane if the lane is unplayable (Last ditch effort).",
+      ],
+      items: [
+    "https://www.mobafire.com/images/item/boots-of-swiftness-64x.png",
+    "https://www.mobafire.com/images/item/mercurys-treads-64x.png",
+  ]
+    },
+
+        {
+      name: "Syndra",
+      difficulty: 5,
+      abilitystart: "E",
+      keystoneStart: "PhaseRush",
+      tips: [
+        "Tethering and spacing is the key to this matchup.",
+        "Bait and dodge her Q.",
+        "She is very strong after level 2, try to always dodge her Q-E.",
+        "Her E cooldown is long, harass her when it is down.",
+        "Play for jungle fights and roams",
+      ],
+      items: [
+    "https://www.mobafire.com/images/item/mercurys-treads-64x.png",
+  ]
+    },
+
+        {
       name: "Cassiopeia",
       difficulty: 5,
       abilitystart: "Q",
@@ -350,7 +550,68 @@ ul {
         "Try to sidestep her Q's",
         "After level 2, she will kill you every time."
       ],
+    items: [
+    "https://www.mobafire.com/images/item/mercurys-treads-64x.png",
+    "https://www.mobafire.com/images/item/spirit-visage-64x.png",
+  ]
     },
+        {
+      name: "Twisted Fate",
+      difficulty: 2,
+      abilitystart: "Q",
+      keystoneStart: "Aery",
+      tips: [
+        "Play around his W cooldown.",
+        "When he ults, stay mid and take plates.",
+        "Try to help your botlane by warding for his ult.",
+        "Tenacity is essential for his gold card.",
+        "Be extra cautious of ganks.",
+      ],
+    items: [
+    "https://www.mobafire.com/images/item/mercurys-treads-64x.png",
+  ]
+    },
+    {
+      name: "Taliyah",
+      difficulty: 2,
+      abilitystart: "E",
+      keystoneStart: "PhaseRush",
+      tips: [
+        "She outranges you.",
+        "She's very weak before level 9.",
+        "Try to hardshove waves and help your team.",
+        "You are much stronger in teamfights because of your ultimate.",
+        "Proper spacing and tethering is important in this matchup.",
+      ],
+    },
+        {
+      name: "Ryze",
+      difficulty: 2,
+      abilitystart: "Q",
+      keystoneStart: "Aery",
+      tips: [
+        "Try to E Ryze every time he E-Q's the wave.",
+        "Match his push or hardshove to prevent him from roaming.",
+        "Post 6, you can all-in him with ultimate.",
+        "Post 11, he should always beat you in the 1v1.",
+        "Hold your E to cancel his escape portal.",
+      ],
+    },
+
+        {
+      name: "Lux",
+      difficulty: 2,
+      abilitystart: "E",
+      keystoneStart: "PhaseRush",
+      tips: [
+        "She outranges you, it's very important you tether her E.",
+        "Post level 8, she will most likely hardshove every wave.",
+        "Match her shove and roam to teamfights.",
+        "You are much stronger in teamfights.",
+        "Proper spacing and tethering is important in this matchup.",
+      ],
+    },
+
     
 
   ];
@@ -385,35 +646,88 @@ ul {
     return `<span class="stars">${full}${empty}</span>`;
   }
 
-  function updateInfo(character) {
-    const ability1 = character.abilitystart;
-    const keystone = character.keystoneStart;
+  // League Keywords
+const keywordDefinitions = {
+  "Tether": "Tethering is the practice of barely walking into the specfic range of your opponents abilities and then quickly exiting when they try to hit you with it. It’s about positioning, spacing, and prediction — you ‘tether’ your distance so you can trade safely and bait abilities.",
+  "Tethering": "Tethering is the practice of barely walking into the specfic range of your opponents abilities and then quickly exiting when they try to hit you with it. It’s about positioning, spacing, and prediction — you ‘tether’ your distance so you can trade safely and bait abilities.",
+  "Freeze": "Freezing is the act of holding the minion wave near your turret without it going under tower, forcing the enemy to overextend to farm and be vulnerable to ganks.",
+  "Freezing": "Freezing is the act of holding the minion wave near your turret without it going under tower, forcing the enemy to overextend to farm and be vulnerable to ganks.",
+  "Hardshove": "Hardshoving is pushing out the wave as quickly as possible, usually using most of your abilities."
+};
 
-    const abilityImg1 = abilityImages[ability1] || "";
-    const keystoneImg = KeystoneImages[keystone] || "";
+// Replace keywords with clickable/hoverable spans
+function makeKeywordsClickable(text) {
+  const regex = new RegExp(`\\b(${Object.keys(keywordDefinitions).join("|")})\\b`, "gi");
+  return text.replace(regex, (match) => {
+    const cleanMatch = match.charAt(0).toUpperCase() + match.slice(1).toLowerCase();
+    return `<span class="keyword-term" data-key="${cleanMatch}" title="${keywordDefinitions[cleanMatch] || ""}">${match}</span>`;
+  });
+}
 
-    const bgImage = getImageUrl(character.name);
-    infoBox.style.backgroundImage = `url(${bgImage})`;
+// Main update function
+function updateInfo(character) {
+  const ability1 = character.abilitystart;
+  const keystone = character.keystoneStart;
 
-infoBox.innerHTML = `
-  <h2>${character.name}</h2>
-  <p><strong>Difficulty:</strong> ${renderStars(character.difficulty)}</p>
-  <div class="ability-icons">
-    ${abilityImg1 ? `<div><h3>Start with ${ability1}</h3><img src="${abilityImg1}" alt="Ability ${ability1}" class="ability-icon highlight-icon"></div>` : ""}
-    ${keystoneImg ? `<div><h3>Take ${keystone.replace(/([A-Z])/g, ' $1').trim()}</h3><img src="${keystoneImg}" alt="Keystone ${keystone}" class="ability-icon highlight-icon"></div>` : ""}
-  </div>
-  <h3>Tips:</h3>
-  <ul>
-    ${character.tips.map(tip => `<li>${tip}</li>`).join("")}
-  </ul>
-  ${character.items && character.items.length > 0 ? `
-    <h3>Recommended Items:</h3>
-    <div class="item-icons">
-      ${character.items.map(itemUrl => `<img src="${itemUrl}" class="item-icon" />`).join("")}
+  const abilityImg1 = abilityImages[ability1] || "";
+  const keystoneImg = KeystoneImages[keystone] || "";
+
+  const bgImage = getImageUrl(character.name);
+  infoBox.style.backgroundImage = `url(${bgImage})`;
+
+  let tipsHTML = character.tips
+    .map(tip => `<li>${makeKeywordsClickable(tip)}</li>`)
+    .join("");
+
+  infoBox.innerHTML = `
+    <h2>${character.name}</h2>
+    <p><strong>Difficulty:</strong> ${renderStars(character.difficulty)}</p>
+    <div class="ability-icons">
+      ${abilityImg1 ? `<div><h3>Start with ${ability1}</h3><img src="${abilityImg1}" alt="Ability ${ability1}" class="ability-icon highlight-icon"></div>` : ""}
+      ${keystoneImg ? `<div><h3>Take ${keystone.replace(/([A-Z])/g, ' $1').trim()}</h3><img src="${keystoneImg}" alt="Keystone ${keystone}" class="ability-icon highlight-icon"></div>` : ""}
     </div>
-  ` : ""}
-`;
-  }
+    <h3>Tips:</h3>
+    <ul>${tipsHTML}</ul>
+    ${character.items && character.items.length > 0 ? `
+      <h3>Recommended Items:</h3>
+      <div class="item-icons">
+        ${character.items.map(itemUrl => `<img src="${itemUrl}" class="item-icon" />`).join("")}
+      </div>
+    ` : ""}
+  `;
+
+  // Style and click listener for keywords
+  document.querySelectorAll(".keyword-term").forEach(term => {
+    term.style.color = "#FFD700";
+    term.style.cursor = "pointer";
+    term.style.textDecoration = "underline";
+
+    // Click opens popup
+    term.addEventListener("click", showKeywordPopup);
+  });
+}
+
+// Popup creation
+function showKeywordPopup(e) {
+  const keyword = e.target.dataset.key;
+  const explanation = keywordDefinitions[keyword] || "No definition found.";
+
+  const popup = document.createElement("div");
+  popup.className = "tether-popup"; // same styling as before
+  popup.innerHTML = `
+    <div class="tether-popup-content">
+      <h3>${keyword}</h3>
+      <p>${explanation}</p>
+      <button id="close-tether">Close</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+
+  // Close button
+  document.getElementById("close-tether").addEventListener("click", () => {
+    popup.remove();
+  });
+}
 
 function createPortrait(character) {
   const img = document.createElement("img");
