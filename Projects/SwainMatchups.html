@@ -108,7 +108,6 @@ ul {
   text-shadow: 1px 1px 3px black;
 }
 
-/* These two are used for both ability and keystone */
 .ability-icon,
 .highlight-icon {
   width: 100px;
@@ -141,6 +140,7 @@ ul {
   transform: scale(1.1);
 }
 
+/* Tether now refers to any keyword popup*/
 .tether-popup {
   position: fixed;
   top: 0;
@@ -607,8 +607,7 @@ ul {
         "She outranges you, it's very important you tether her E.",
         "Post level 8, she will most likely hardshove every wave.",
         "Match her shove and roam to teamfights.",
-        "You are much stronger in teamfights.",
-        "Proper spacing and tethering is important in this matchup.",
+        "You can all-in her down when her Q is down.",
       ],
     },
 
@@ -713,7 +712,7 @@ function showKeywordPopup(e) {
   const explanation = keywordDefinitions[keyword] || "No definition found.";
 
   const popup = document.createElement("div");
-  popup.className = "tether-popup"; // same styling as before
+  popup.className = "tether-popup";
   popup.innerHTML = `
     <div class="tether-popup-content">
       <h3>${keyword}</h3>
