@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dan Herman Games</title>
+  <link rel="stylesheet" type="text/css" href="../styles.css">
+  <link rel="stylesheet" type="text/css" href="umas.css">
+
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/school.html">School</a></li>
+      <li><a href="/projects.html">Projects</a></li>
+      <li><a href="/games.html">Games</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <h1 id="page-title">My UmaMusume Champion Planner</h1>
+
+  <select id="title-select">
+    <option value="">-- Pick Your Champion's Meeting --</option>
+  </select>
+
+<section id="filters">
+  <select class="filter" data-filter="Length"><option>Length</option></select>
+  <select class="filter" data-filter="Clockwise"><option>Clockwise</option></select>
+  <select class="filter" data-filter="Surface"><option>Surface</option></select>
+  <select class="filter" data-filter="Weather"><option>Weather</option></select>
+  <select class="filter" data-filter="Season"><option>Season</option></select>
+  <select class="filter" data-filter="Track"><option>Track</option></select>
+</section>
+
+  <section id="character-sheets"></section>
+</main>
+
+<script src="Umas.js"></script>
+
+<script>
+const presets = {
+  "Taurus Cup":["1600m (Mile)","Right","Firm","Sunny","Spring","Tokyo"],
+  "Gemini Cup":["2400m (Long)","Left","Soft","Rainy","Summer","Kyoto"],
+  "Unknown Cup":["Unknown","Unknown","Unknown","Unknown","Unknown","Unknown"]
+};
+
+const filterOptions = {
+  "Length": ["Sprint", "Mile", "Medium", "Long"],
+  "Clockwise": ["Right", "Left"],
+  "Surface": ["Firm", "Soft"],
+  "Weather": ["Sunny", "Rainy", "Cloudy"],
+  "Season": ["Spring", "Summer", "Fall", "Winter"],
+  "Track": ["Tokyo", "Nakayama", "Kyoto"]
+};
+
+const titleSelect = document.getElementById("title-select");
+const filters = document.querySelectorAll(".filter");
+
+Object.keys(presets).forEach(key=>{
+  const opt = document.createElement("option");
+  opt.value = key;
+  opt.textContent = key;
+  titleSelect.appendChild(opt);
+});
+const customOpt = document.createElement("option");
+customOpt.value="custom";
+customOpt.textContent="Custom Cup";
+titleSelect.appendChild(customOpt);
+
+filters.forEach(f=>f.disabled=true);
+
+// Populate custom filter options
+filters.forEach(select => {
+  const filterName = select.dataset.filter; // Use the data-filter attribute
+  select.innerHTML = "";
+  
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = filterName;
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  placeholder.style.color = "gray";
+  select.appendChild(placeholder);
+
+  if (filterOptions[filterName]) {
+    filterOptions[filterName].forEach(optText => {
+      const opt = document.createElement("option");
+      opt.value = optText;
+      opt.textContent = optText;
+      select.appendChild(opt);
+    });
+  }
+});
+
+titleSelect.addEventListener("change",function(){
+  const choice=this.value;
+  if(choice==="custom"){ filters.forEach(d=>d.disabled=false); }
+  else if(presets[choice]){ filters.forEach((d,i)=>{ d.innerHTML=`<option>${presets[choice][i]}</option>`; d.disabled=true; }); }
+  else{ filters.forEach(d=>{ d.innerHTML=`<option>--</option>`; d.disabled=true; }); }
+});
+
+// Character sheets setup
+const container = document.getElementById("character-sheets");
+const statColors = ["#3399FF","#FF3333","#FF9900","#FF66CC","#33CC33"];
+const statIcons = [
+  "https://gametora.com/images/umamusume/icons/utx_ico_obtain_00.png",
+  "https://gametora.com/images/umamusume/icons/utx_ico_obtain_01.png",
+  "https://gametora.com/images/umamusume/icons/utx_ico_obtain_02.png",
+  "https://gametora.com/images/umamusume/icons/utx_ico_obtain_03.png",
+  "https://gametora.com/images/umamusume/icons/utx_ico_obtain_04.png"
+];
+const statLabels = ["Speed","Stamina","Power","Guts","Wit"];
+
+function createCharacterSheet(defaultChar) {
+  const div = document.createElement("div");
+  div.className = "character-sheet";
+
+  // Character title input
+  const titleInput = document.createElement("input");
+  titleInput.type = "text";
+  titleInput.placeholder = "Give your Uma a title...";
+  titleInput.style.width = "100%";
+  titleInput.style.marginBottom = "10px";
+  titleInput.style.padding = "10px 8px";
+  titleInput.style.boxSizing = "border-box";
+  titleInput.style.fontSize = "24px";
+  titleInput.style.borderRadius = "5px";
+  titleInput.style.border = "1px solid #999";
+  titleInput.style.textAlign = "center";
+  div.appendChild(titleInput);
+
+  // Character dropdown
+  const dropdown = document.createElement("div");
+  dropdown.className = "custom-dropdown";
+
+  const selected = document.createElement("img");
+  selected.className = "selected-img";
+  selected.src = defaultChar.img;
+  selected.alt = defaultChar.name;
+  selected.style.width = "300px";
+  selected.style.height = "300px";
+  selected.style.borderRadius = "8px";
+  selected.style.cursor = "pointer";
+  dropdown.appendChild(selected);
+
+  const optionsContainer = document.createElement("div");
+  optionsContainer.className = "options-container";
+
+  // Populate character options
+  characters.forEach(c => {
+    if(!c.name) return;
+    const opt = document.createElement("div");
+    opt.className = "option";
+    opt.innerHTML = `<img src="${c.img}" width="120" height="120"><span>${c.name}</span>`;
+    opt.addEventListener("click", e => {
+      e.stopPropagation();
+      selected.src = c.img;
+      selected.alt = c.name;
+      card.querySelector("h1").textContent = c.name;
+      optionsContainer.style.display = "none";
+    });
+    optionsContainer.appendChild(opt);
+  });
+
+  dropdown.appendChild(optionsContainer);
+
+  selected.addEventListener("click", e => {
+    e.stopPropagation();
+    optionsContainer.style.display = optionsContainer.style.display === "grid" ? "none" : "grid";
+  });
+
+  document.addEventListener("click", () => {
+    optionsContainer.style.display = "none";
+  });
+
+  div.appendChild(dropdown);
+
+  // Character card
+  const card = document.createElement("div");
+  card.className = "character-card";
+  card.innerHTML = `<h1>${defaultChar.name}</h1>`;
+  div.appendChild(card);
+
+  // Stats grid
+  const statsDiv = document.createElement("div");
+  statsDiv.className = "stats-grid";
+  for (let i=0; i<5; i++){
+    const sDiv = document.createElement("div");
+    sDiv.className = "stat-card";
+    sDiv.style.backgroundColor = statColors[i];
+    sDiv.innerHTML = `<img src="${statIcons[i]}" alt="${statLabels[i]}"><input type="number" min="0" max="1200" value="800">`;
+    statsDiv.appendChild(sDiv);
+  }
+  div.appendChild(statsDiv);
+
+  // Options dropdowns
+  const options = document.createElement("div");
+  options.className = "options";
+options.innerHTML = `
+  <div style="display:flex; flex-direction:column; align-items:center;">
+    <label style="margin-bottom:2px; font-weight:bold; color:#000; font-size:14px;">Distance</label>
+    <select style="margin:0; padding:4px 8px; font-size:14px;">>
+      <option>Sprint</option>
+      <option>Mile</option>
+      <option>Medium</option>
+      <option>Long</option>
+    </select>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center;">
+    <label style="margin-bottom:2px; font-weight:bold; color:#000; font-size:14px;">Style</label>
+    <select style="margin:0; padding:4px 8px; font-size:14px;">
+      <option>Front Runner</option>
+      <option>Pace Chaser</option>
+      <option>Late Surger</option>
+      <option>End Closer</option>
+    </select>
+  </div>
+
+  <div style="display:flex; flex-direction:column; align-items:center;">
+    <label style="margin-bottom:2px; font-weight:bold; color:#000; font-size:14px;">Surface</label>
+    <select style="margin:0; padding:4px 8px; font-size:14px;">
+      <option>Turf</option>
+      <option>Dirt</option>
+    </select>
+  </div>
+`;
+
+  div.appendChild(options);
+
+  // Skills
+  const skills = document.createElement("div");
+  skills.className = "skills";
+  skills.innerHTML = `<h4>Speed Skills</h4><ul><li>Placeholder</li></ul>
+                      <h4>Stamina Skills</h4><ul><li>Placeholder</li></ul>
+                      <h4>Other Skills</h4><ul><li>Placeholder</li></ul>`;
+  div.appendChild(skills);
+
+  // Notes
+  const notes = document.createElement("div");
+  notes.className = "notes";
+  notes.innerHTML = `<h4>Notes</h4><textarea rows="4" placeholder="Additional notes..."></textarea>`;
+  div.appendChild(notes);
+
+  // Extra section
+  const extra = document.createElement("div");
+  extra.className = "extra-section";
+  extra.innerHTML = `<h4>Coming Soon</h4>`;
+  div.appendChild(extra);
+
+  container.appendChild(div);
+}
+
+// Shuffle the characters array
+function getRandomCharacters(arr, count) {
+  const shuffled = arr.filter(c => c.name).sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
+
+// Create 3 random character sheets
+getRandomCharacters(characters, 3).forEach(c => {
+  createCharacterSheet(c);
+});
+
+
+</script>
+</body>
+</html>
