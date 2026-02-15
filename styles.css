@@ -130,3 +130,278 @@ video {
   max-width: 100%;
   height: auto;
 }
+
+
+
+/* THE NEW STUFF FOR THE MAIN PAGE ----------------------------------------------------------------------------------------------
+
+/* ===============================
+   HEADINGS
+================================ */
+
+h1, h2, h3 {
+  font-family: 'MyFont', Arial, sans-serif;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 2.6rem;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1px;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+/* ===============================
+   MAIN LAYOUT
+================================ */
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  height: calc(100vh - 80px);
+  padding: 20px 20px;
+  width: 100%;
+  animation: fadeIn 1.2s ease;
+
+  box-sizing: border-box;
+}
+
+/* ===============================
+   SECTION CARDS
+================================ */
+
+.section-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 40px;
+  padding: 25px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: 0.4s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 0;
+  overflow: hidden;
+}
+
+.section-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ===============================
+   ABOUT + SKILLS (LEFT COLUMN)
+================================ */
+
+.about-skills {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.about-intro {
+  margin-bottom: 15px;
+}
+
+.intro {
+  font-size: 1.05rem;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   SKILLS + PORTRAIT GRID
+================================ */
+
+.skills-portrait {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 25px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* ===============================
+   PORTRAIT
+================================ */
+
+.portrait {
+  display: block;
+  margin: 0 auto;
+  max-height: 500px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: transform 0.4s ease;
+}
+
+.portrait:hover {
+  transform: scale(1.05);
+}
+
+/* ===============================
+   SKILLS LIST
+================================ */
+
+.skills ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills li {
+  margin: 20px 0;
+  font-size: 1rem;
+  padding: 20px;
+  border-left: 4px solid #e63946;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.skills li:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateX(6px);
+}
+
+/* ===============================
+   PROJECT SECTION
+================================ */
+
+.projects-column {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Make the entire card clickable */
+.project-card-link {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===============================
+   PROJECT CARD
+================================ */
+
+.project-card {
+  position: relative;
+  height: 100%;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.project-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* 🔑 fills box, preserves aspect */
+  object-position: center; /* 🔑 centers the crop */
+}
+
+/* Overlay */
+.project-overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 🔑 move text to top */
+  align-items: center;
+
+  text-align: center;
+  padding: 24px;
+  padding-top: 30px; /* breathing room */
+
+  color: white;
+
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.22),
+    rgba(0, 0, 0, 0.45)
+  );
+}
+
+
+/* Hover effects */
+.project-card:hover .project-bg {
+  transform: scale(1.08);
+}
+
+.project-card:hover .project-cta {
+  background: #ff4d5a;
+}
+
+.projects-column {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+    grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.project-card-link {
+  height: 100%;
+  display: block;
+}
+
+.project-card {
+  height: 100%;
+}
+/* ===============================
+   ANIMATIONS
+================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1000px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
+
+  .about-skills {
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .skills-portrait {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .portrait {
+    max-width: 260px;
+    margin: 20px auto 0;
+  }
+}

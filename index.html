@@ -3,130 +3,9 @@
 <head>
   <title>Dan Herman Games</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
-  <style>
-    h1, h2, h3 {
-      font-family: 'Bebas Neue', Arial, sans-serif;
-      text-align: center;
-    }
 
-    h2 {
-      font-size: 48px;
-    }
-
-    img {
-      display: block;
-      margin: 20px auto;
-      max-width: 100%;
-      border-radius: 10px;
-      transition: transform 0.4s ease;
-    }
-
-    img:hover {
-      transform: scale(1.05);
-    }
-
-    .main-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      padding: 40px;
-      animation: fadeIn 1.5s ease;
-    }
-
-    .left-side, .right-side {
-      flex: 1;
-      min-width: 320px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(5px);
-      animation: slideUp 1.2s ease;
-    }
-
-
-
-    h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-    }
-
-    .intro {
-      font-size: 1.2rem;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .skills ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .skills li {
-      margin: 10px 0;
-      font-size: 1.1rem;
-      padding: 10px;
-      border-left: 4px solid #e63946;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 5px;
-      transition: 0.3s ease;
-    }
-
-    .skills li:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateX(5px);
-    }
-
-    .right-side a img {
-      transition: transform 0.3s ease;
-    }
-
-    .right-side a img:hover {
-      transform: scale(1.08);
-    }
-
-    .project-button {
-      display: inline-block;
-      padding: 12px 25px;
-      background: #e63946;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      margin-top: 20px;
-      transition: 0.3s ease;
-    }
-
-    .project-button:hover {
-      background: #ff4d5a;
-      transform: translateY(-2px);
-    }
-
-    .portrait {
-      display: block;
-      margin: 30px auto;   /* Centers image */
-      max-width: 250px;    /* Shrinks it */
-      height: auto;        /* Keeps proportions */
-      border-radius: 10px;
-      transition: transform 0.4s ease;
-    }
-
-    .portrait:hover {
-      transform: scale(1.05);
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    @keyframes slideUp {
-      from {transform: translateY(40px); opacity: 0;}
-      to {transform: translateY(0); opacity: 1;}
-    }
-  </style>
 </head>
+
 <body>
 
 <header>
@@ -142,38 +21,72 @@
 </header>
 
 <div class="main-container">
-  <div class="left-side">
-    <h1>Who is Dan Herman?</h1>
-    <p class="intro">
-      Motivated and detail-oriented programmer with strong problem-solving skills and a passion for software 
-      development. Seeking an entry-level position to contribute technical expertise, collaborate with teams, and 
-      develop efficient solutions. Adept at coding, debugging, and documentation, with experience in multiple 
-      programming languages and development environments. 
-    </p>
-    <img src="Assets/MeCore.jpg" alt="Professional Photo of Me" class="portrait">
-    <div class="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li><strong>Software Development & Programming</strong> | Proficient in writing clean, efficient, and maintainable code.</li>
-        <li><strong>Project Documentation</strong> | Skilled in creating clear and structured technical documentation.</li>
-        <li><strong>Problem-Solving & Debugging</strong> | Strong analytical skills to identify and resolve issues effectively.</li>
-        <li><strong>Programming Languages</strong> | Experienced in C++, Python, and HTML.</li>
-        <li><strong>Version Control & Collaboration</strong> | Knowledgeable in Git and team-based development workflows.</li>
-      </ul>
-    </div>
-  </div>
 
-  <div class="right-side">
-    <h2>Current Project:</h2>
-    <h3>League of Legends - Swain Matchup Guide</h3>
-    <a href="/Projects/SwainMatchups.html">
-      <img src="Assets/SwainPreview.PNG" alt="Image of Swain Matchups">
-    </a>
-    <p>
-      <a href="/Projects/SwainMatchups.html" class="project-button">View Project Page</a>
-    </p>
-  </div>
-</div>
+  <section class="section-box about-skills">
+
+    <div class="about-intro">
+      <h1>Who is Dan Herman?</h1>
+      <p class="intro">
+        Motivated and detail-oriented programmer with strong problem-solving skills and a passion for software
+        development. Seeking an entry-level position to contribute technical expertise, collaborate with teams,
+        and develop efficient solutions.
+      </p>
+    </div>
+
+    <div class="skills-portrait">
+
+      <img src="Assets/MeCore.jpg" alt="Professional Photo of Me" class="portrait">
+
+      <div class="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li><strong>Software Development & Programming</strong> — Clean, maintainable code.</li>
+          <li><strong>Project Documentation</strong> — Structured technical writing.</li>
+          <li><strong>Problem-Solving & Debugging</strong> — Analytical issue resolution.</li>
+          <li><strong>Languages</strong> — C++, Python, HTML.</li>
+          <li><strong>Version Control</strong> — Git & team workflows.</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- RIGHT TOP -->
+<section class="projects-column">
+
+  <a href="/Projects/SwainMatchups.html" class="project-card-link">
+    <div class="project-card">
+
+      <img src="Assets/SekiroPreview.png"
+           alt="Current Project"
+           class="project-bg">
+
+      <div class="project-overlay">
+        <h2>Current Project</h2>
+        <h3>3d Model for Sekiro Mod</h3>
+      </div>
+
+    </div>
+  </a>
+
+  <a href="/Projects/SwainMatchups.html" class="project-card-link">
+    <div class="project-card">
+
+      <img src="Assets/SwainPreview2.PNG"
+           alt="Featured Project"
+           class="project-bg">
+
+      <div class="project-overlay">
+        <h2>Featured Project</h2>
+        <h3>League of Legends – Swain Matchup Guide</h3>
+
+      </div>
+
+    </div>
+  </a>
+
+</section>
 
 </body>
 </html>
