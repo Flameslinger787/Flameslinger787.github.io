@@ -4,59 +4,116 @@
   <meta charset="UTF-8">
   <title>Dan Herman Games</title>
   <link rel="stylesheet" type="text/css" href="../styles.css">
+
   <style>
-
-    h1 {
-      text-align: center;
-      font-size: 2em;
-      margin: 0.5em 0;
-      color: #2c3e50;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#2b3a55, #1e2a3f);
     }
 
-        p {
-      text-align: center;
-      font-size: 1em;
-      margin: 0.5em 0;
-      color: #2c3e50;
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 40px;
+      max-width: 1600px;
+      margin: 80px auto;
+      padding: 0 40px;
     }
 
-.project-box {
-  background-color: rgb(141, 169, 196);
-  border-radius: 15px;
-  padding: 20px;
-  margin: 30px auto;
-  max-width: 900px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .project-box {
+      background-color: #8faac2;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    }
+
+    .project-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: none;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+.project-content {
+  padding: 16px 20px;
   text-align: center;
+  color: #ffffff;
+
+  flex: none;
 }
 
-.project-box:hover {
-  transform: scale(1.04);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+.project-content h2,
+.project-content h3 {
+  margin: 0;
+  line-height: 1.3;
 }
 
-.project-box h1 {
-  font-size: 1.8em;
-  color: #2c3e50;
-  margin-bottom: 15px;
-}
-
-.project-box img,
-.project-box video {
-  width: calc(100% - 40px);
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  display: block;
-  margin: 0 auto;
-}
-
-    .video-container {
-      margin-top: 15px;
+    .project-content p {
+      margin: 0;
+      font-size: 1.05em;
+      color: #e9eef3;
     }
+
+    .top-feature {
+      grid-column: 2 / span 4;
+    }
+
+    .left-project {
+      grid-column: 1 / span 3;
+    }
+
+    .right-project {
+      grid-column: 4 / span 3;
+    }
+
+
+    @media (max-width: 900px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .top-feature,
+      .left-project,
+      .right-project {
+        grid-column: span 1;
+      }
+
+      .project-box {
+        min-height: auto;
+      }
+
+      .project-box img {
+        height: 260px;
+      }
+    }
+
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
   </style>
 </head>
+
 <body>
   <header>
     <nav>
@@ -70,14 +127,121 @@
     </nav>
   </header>
 
-  <div class="project-box">
-<h1> The goal of this project is to create a 3D model of a character from scratch in Blender for use in a Sekiro mod.</h1>
-    <img src="../Assets/Sekiro/SekiroPreview.png" alt="Sekiro Preview">
-  </div>
 
-    <div class="project-box">
-<h1> I decided I would make Mayano Top Gun from Umamusume and use this character sheet as a reference.</h1>
-    <img src="../Assets/Sekiro/MayaReference.png" alt="Blender Reference">
+      <!-- Top Template -->
+<div class="project-box top-feature">
+  <div class="image-wrapper">
+    <img src="../Assets/Sekiro/SekiroPreview.png" alt="Overview">
+  </div>
+  <div class="project-content">
+    <h3>The goal of this project is to create a 3D model of a character from scratch in Blender for use in a Sekiro mod.</h3>
+  </div>
+</div>
+
+
+  <div class="projects-grid">
+
+    <!-- Left Template -->
+    <div class="project-box left-project">
+        <div class="image-wrapper">
+      <img src="../Assets/Sekiro/Maya.png" alt="Preview">
+      </div>
+      <div class="project-content">
+        <h2>I decided I would make Mayano Top Gun from Umamusume.</h2>
+      </div>
+    </div>
+
+    <!-- Right Template -->
+    <div class="project-box right-project">
+        <div class="image-wrapper">
+      <img src="../Assets/Sekiro/MayaReference2.png" alt="Reference">
+      </div>
+      <div class="project-content">
+        <h2>The character sheet used for reference.</h2>
+      </div>
+    </div>
+
+    <div class="project-box top-feature">
+  <div class="image-wrapper">
+    <img src="../Assets/Sekiro/1.png" alt="Initial Blockout">
+  </div>
+  <div class="project-content">
+    <h2>The initial blockout of her body.</h2>
+    <p>The mirror modifier is a lifesaver.</p>
+  </div>
+</div>
+
+    <div class="project-box left-project">
+        <div class="image-wrapper">
+      <img src="../Assets/Sekiro/2.png" alt="image">
+      </div>
+      <div class="project-content">
+        <h2>The earliest version of her boots.</h2>
+        <p>My favorite part of the whole model!. </p>
+      </div>
+    </div>
+
+    <div class="project-box right-project">
+        <div class="image-wrapper">
+      <img src="../Assets/Sekiro/3.png" alt="image">
+      </div>
+      <div class="project-content">
+        <h2>The completed body before smoothing.</h2>
+        <p>It will recieve many, many more adjustments.</p>
+      </div>
+    </div>
+
+    <div class="project-box left-project">
+        <div class="image-wrapper">
+      <img src="../Assets/Sekiro/4.png" alt="image">
+      </div>
+      <div class="project-content">
+        <h2>Her first face!</h2>
+        <p>Scary!</p>
+      </div>
+    </div>
+
+    <div class="project-box right-project">
+        <div class="image-wrapper">
+      <img src="../Assets/Sekiro/5.png" alt="image">
+      </div>
+      <div class="project-content">
+        <h2>Her first tail.</h2>
+        <p>It wouldn't look decent until her THIRD tail later. Her proportions also look horribly off.</p>
+      </div>
+    </div>
+
+    <div class="project-box top-feature">
+  <div class="image-wrapper">
+    <img src="../Assets/Sekiro/6.png" alt="image">
+  </div>
+  <div class="project-content">
+    <h2>Adding her hands.</h2>
+    <p>This is the worst part of her model. Hands are hard!</p>
+  </div>
+</div>
+
+    <div class="project-box left-project">
+        <div class="image-wrapper">
+      <img src="../Assets/Sekiro/7.png" alt="image">
+      </div>
+      <div class="project-content">
+        <h2>We finally add her hair.</h2>
+        <p>Iconic!</p>
+      </div>
+    </div>
+
+    <div class="project-box right-project">
+        <div class="image-wrapper">
+      <img src="../Assets/Sekiro/8.png" alt="image">
+      </div>
+      <div class="project-content">
+        <h2>This took a long time.</h2>
+        <p>Many hours and half a dozen different attempts, techniques, and tutorials were used in the process.</p>
+      </div>
+    </div>
+
+
   </div>
 </body>
 </html>
