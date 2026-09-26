@@ -2,14 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!--
+  SPOTIFY SORTER — SINGLE-FILE EDITING GUIDE
 
+  Upload this file as /Projects/SpotifySorter.html. No asset folder is required.
+  Public Spotify Client ID: edit the meta tag immediately below this comment.
+  Redirect URI: https://danhermangames.com/Projects/SpotifySorter.html
+  Never put a Spotify Client Secret or account password in this document.
+
+  FILE MAP
+  1. Settings and security policy (this head section)
+  2. Theme CSS (the first style block)
+  3. Page layout and controls (body)
+  4. JavaScript (one commented script block near the end)
+  5. Embedded font data (last style block; no editing normally needed)
+
+  RANDOM ORDER
+  New rankings shuffle on Start. Saved rankings never reshuffle on resume.
+  This removes the original playlist order from the starting presentation,
+  while preserving the meaning of saved comparisons and undo.
+
+  SECURITY WHEN EDITING
+  The Content-Security-Policy allows only this document's exact inline code
+  and styles, using SHA-256 hashes. Editing comments, whitespace or logic
+  INSIDE script/style blocks requires updating those hashes before upload.
+  Editing the Client ID meta value or ordinary HTML does not change them.
+  Do not delete this protection just to work around an incorrect hash.
+-->
 
     <meta name="spotify-client-id" content="adbb8959e3254dfe86b6a7ce461d1e7d" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="referrer" content="no-referrer" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'sha256-baWk32VT9fhrD3N8RzH5J/Wj8i4KR+W9UmrSugQzNgc='; style-src 'sha256-2wLT7OgZxMOzca/U2QFBdrJENnCnPLedQCEwKWQ6lWk=' 'sha256-CWe5Cp1tEv4VXjPPugauSuPo1MXXu6WyVN+czC4ORC0='; font-src data:; img-src data: https:; connect-src https://accounts.spotify.com https://api.spotify.com; object-src 'none'; base-uri 'none'; form-action 'self';"
+      content="default-src 'self'; script-src 'sha256-MQ5rmIeblvmOyWmmoeGkhZ+MZOcnqbnJRueOKRW1okE='; style-src 'sha256-RxG/L4fZbc6kRy72GOBiaf5kODpys/V+Urkq2kMeCGQ=' 'sha256-CWe5Cp1tEv4VXjPPugauSuPo1MXXu6WyVN+czC4ORC0='; font-src data:; img-src data: https:; connect-src https://accounts.spotify.com https://api.spotify.com; object-src 'none'; base-uri 'none'; form-action 'self';"
     />
     <title>Spotify Playlist Sorter | Dan Herman Games</title>
     <meta
@@ -614,6 +640,12 @@
         color: var(--muted);
         font-size: 0.95rem;
       }
+      /* Author disclosure stays visible below the privacy details. */
+      .author-disclaimer {
+        margin: 20px 0 0;
+        text-align: center;
+        color: var(--muted);
+      }
       footer {
         display: flex;
         justify-content: space-between;
@@ -1023,12 +1055,16 @@
             <article>
               <p class="muted">Song A</p>
               <div id="left-song"></div>
-              <button id="left">Prefer A <small>(1)</small></button>
+              <button id="left" aria-keyshortcuts="1 ArrowLeft">
+                Prefer A <small>(1 or ←)</small>
+              </button>
             </article>
             <article>
               <p class="muted">Song B</p>
               <div id="right-song"></div>
-              <button id="right">Prefer B <small>(2)</small></button>
+              <button id="right" aria-keyshortcuts="2 ArrowRight">
+                Prefer B <small>(2 or →)</small>
+              </button>
             </article>
           </div>
           <p class="muted">If they feel equal, choose either. You can undo a choice.</p>
@@ -1112,10 +1148,9 @@
           you own or collaborate on.
         </p>
       </details>
-      <header class="page-header">
-        <p>This is an entirely Ai vibe-coded tool. I did not write any of this.</p>
-      </header>
-
+      <p class="author-disclaimer">
+        This is an entirely Ai vibe-coded tool. I did not write any of this.
+      </p>
       <footer>
         <a href="https://danhermangames.com/projects.html">Back to projects</a
         ><span>Dan Herman Games</span>
@@ -1159,7 +1194,11 @@
             return n * k - 2 ** k + 1;
           }
           class MergeSorter {
-            constructor(n, choices = []) {
+            constructor(n, choices = [], schedule = "rounds-v1") {
+              if (!["rounds-v1", "legacy"].includes(schedule))
+                throw Error("Invalid comparison schedule.");
+              this.schedule = schedule;
+              this.round = 0;
               this.nodes = [];
               this.jobs = [];
               this.cursor = 0;
@@ -1168,21 +1207,58 @@
                 const id = this.nodes.length;
                 this.nodes.push(null);
                 if (hi - lo <= 1) {
-                  this.nodes[id] = { result: hi > lo ? [lo] : [] };
+                  this.nodes[id] = { result: hi > lo ? [lo] : [], height: 0 };
                   return id;
                 }
                 const mid = lo + Math.floor((hi - lo) / 2),
                   left = build(lo, mid),
                   right = build(mid, hi);
-                this.nodes[id] = { left, right, a: 0, b: 0, result: [] };
+                this.nodes[id] = {
+                  left,
+                  right,
+                  a: 0,
+                  b: 0,
+                  result: [],
+                  height: 1 + Math.max(this.nodes[left].height, this.nodes[right].height),
+                  complete: false,
+                };
                 this.jobs.push(id);
                 return id;
               };
               this.root = build(0, n);
+              // Finish small independent matches throughout the playlist first.
+              // Keep the same merge tree, so neither accuracy nor comparison count changes.
+              this.rounds = [];
+              for (const id of this.jobs) {
+                const level = this.nodes[id].height - 1;
+                (this.rounds[level] ||= []).push(id);
+              }
               this.advance();
               for (const choice of choices) this.choose(choice);
             }
             advance() {
+              if (this.schedule === "rounds-v1") {
+                // Rotate through independent merges within each round. A winning
+                // song waits while the other matches get a turn, instead of returning immediately.
+                while (this.round < this.rounds.length) {
+                  const jobs = this.rounds[this.round];
+                  for (let checked = 0; checked < jobs.length; checked++) {
+                    const node = this.nodes[jobs[this.cursor]],
+                      a = this.nodes[node.left].result,
+                      b = this.nodes[node.right].result;
+                    if (!node.complete) {
+                      if (node.a < a.length && node.b < b.length) return;
+                      node.result.push(...a.slice(node.a), ...b.slice(node.b));
+                      node.complete = true;
+                    }
+                    this.cursor = (this.cursor + 1) % jobs.length;
+                  }
+                  this.round++;
+                  this.cursor = 0;
+                }
+                return;
+              }
+              // Untagged older sessions retain their original schedule for safe replay.
               while (this.cursor < this.jobs.length) {
                 const node = this.nodes[this.jobs[this.cursor]],
                   a = this.nodes[node.left].result,
@@ -1193,20 +1269,31 @@
               }
             }
             get done() {
-              return this.cursor === this.jobs.length;
+              return this.schedule === "rounds-v1"
+                ? this.round === this.rounds.length
+                : this.cursor === this.jobs.length;
+            }
+            get currentNode() {
+              return this.nodes[
+                this.schedule === "rounds-v1"
+                  ? this.rounds[this.round][this.cursor]
+                  : this.jobs[this.cursor]
+              ];
             }
             get pair() {
               if (this.done) return null;
-              const node = this.nodes[this.jobs[this.cursor]];
+              const node = this.currentNode;
               return [this.nodes[node.left].result[node.a], this.nodes[node.right].result[node.b]];
             }
             choose(choice) {
               if (this.done || ![0, 1].includes(choice)) throw Error("Invalid comparison history.");
-              const node = this.nodes[this.jobs[this.cursor]],
+              const node = this.currentNode,
                 side = choice === 0 ? "left" : "right",
                 index = choice === 0 ? "a" : "b";
               node.result.push(this.nodes[node[side]].result[node[index]++]);
               this.choices.push(choice);
+              if (this.schedule === "rounds-v1")
+                this.cursor = (this.cursor + 1) % this.rounds[this.round].length;
               this.advance();
             }
             get result() {
@@ -1684,7 +1771,7 @@
               throw Error("Invalid comparison history.");
             const engine =
               mode === "exact"
-                ? new MergeSorter(songs.length, choices)
+                ? new MergeSorter(songs.length, choices, data.exactSchedule ?? "legacy")
                 : new QuickRanker(songs.length, tiers, comparisons);
             const state = {
               format: "playlist-sorter-v2",
@@ -1702,6 +1789,8 @@
           function snapshot(state, engine) {
             return {
               ...state,
+              // Scheduling is part of the replay format, just like the song order.
+              exactSchedule: state.mode === "exact" ? engine.schedule : undefined,
               choices: state.mode === "exact" ? engine.choices : [],
               tiers: state.mode === "quick" ? engine.tiers : [],
               comparisons: state.mode === "quick" ? engine.comparisons : [],
@@ -2167,7 +2256,7 @@
           getElement("mode-exact").setAttribute("aria-pressed", String(!quick));
           getElement("mode-description").textContent = quick
             ? "Choose a rough tier for each song, then refine with a short round of comparisons. Every song gets a place; closely matched positions remain approximate."
-            : "Compare songs until every position is resolved. Best when you want a precise order and can make consistent choices.";
+            : "Compare songs in rounds across the playlist until every position is resolved. Best when you want a precise order and can make consistent choices.";
           getElement("estimate").textContent = quick
             ? `Up to ${formatNumber(quickBudget(n))} head-to-head comparisons`
             : `Up to ${formatNumber(maxComparisons(n))} head-to-head comparisons`;
@@ -2455,7 +2544,11 @@
         getElement("undo").onclick = () => {
           if (busy || !historyLength()) return;
           if (state.mode === "exact")
-            engine = new MergeSorter(state.songs.length, engine.choices.slice(0, -1));
+            engine = new MergeSorter(
+              state.songs.length,
+              engine.choices.slice(0, -1),
+              engine.schedule,
+            );
           else if (engine.comparisons.length)
             engine = new QuickRanker(
               state.songs.length,
@@ -2577,9 +2670,14 @@
           if (state.mode === "quick" && engine.tiering && /^[1-5]$/.test(e.key)) {
             e.preventDefault();
             rate(Number(e.key) - 1);
-          } else if (e.key === "1" || e.key === "2") {
-            e.preventDefault();
-            choose(Number(e.key) - 1);
+          } else if (!(state.mode === "quick" && engine.tiering)) {
+            // Arrow keys mirror the two song cards; 1 and 2 remain available.
+            // Only consume arrows during a head-to-head comparison.
+            const side = { 1: 0, 2: 1, ArrowLeft: 0, ArrowRight: 1 }[e.key];
+            if (side !== undefined) {
+              e.preventDefault();
+              choose(side);
+            }
           }
         });
 
